@@ -1,1 +1,1 @@
-web: docker-compose up --build
+web: flask db migrate; flask db upgrade; gunicorn app:app
