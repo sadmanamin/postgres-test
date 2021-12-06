@@ -10,7 +10,7 @@ app=Flask(__name__)
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or \
  #       'sqlite:///' + os.path.join(basedir, 'app.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')or 'postgresql://postgres:pass@localhost:5400/test'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'postgresql://postgres:123456@36.255.69.11:5432/newdb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['LOG_TO_STDOUT'] = os.environ.get('LOG_TO_STDOUT')
 
@@ -58,4 +58,4 @@ def delete(todo_id):
 
 if __name__ == '__main__':
     #db.create_all()
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
