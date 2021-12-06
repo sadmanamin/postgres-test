@@ -12,6 +12,7 @@ app=Flask(__name__)
  #       'sqlite:///' + os.path.join(basedir, 'app.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '').replace('postgres://', 'postgresql://') or 'postgresql://postgres:pass@localhost:5400/test'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['LOG_TO_STDOUT'] = os.environ.get('LOG_TO_STDOUT')
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
